@@ -21,9 +21,11 @@ int main()
 			arr[i][a] = rand() % 10 + 1;
 			std::cout << arr[i][a] << " ";
 
+
 		}
 		std::cout << "\n";
 	}
+	std::cout << "123";
 	return 0;
 }
 
