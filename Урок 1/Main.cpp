@@ -1,5 +1,97 @@
 #include <iostream>
 #include <Windows.h>
+const int size = 5;
+
+template<typename T1, typename T2>
+int Sum(T1 one, T2 two)
+{
+	return one + two;
+}
+
+int Fak(int num, int num2)
+{
+	//int result = 0;
+	if (num2 < 0)
+	{
+		return 0;
+	}
+
+	if (num2 == 0)
+	{
+		
+		return 0;
+	}
+	 return num + Fak(num, num2 - 1);
+
+}
+
+
+
+void SetArray(int name[], int size)
+{
+	 for (int i = 0; i < size; i++)
+	{
+		name[i] = rand() % 10 + 1;
+	}
+	 
+}
+void SetArray(double name[], double size)
+{
+
+	for (int i = 0; i < size; i++)
+	{
+		
+		name[i] = (double)(rand() % 10 + 1) / 10;
+	}
+	
+}
+void SetArray(char name[], char size)
+{
+	for (int i = 0; i < size; i++)
+	{
+		name[i] = 'a' + rand() % 26;
+	}
+	
+}
+void PrintArray(int name[], int size)
+{
+	
+	for (int i = 0; i < size; i++)
+	{
+		std::cout << name[i] << " ";
+	}
+	std::cout << "\n";
+
+}
+void PrintArray(double name[], double)
+{
+	for (int i = 0; i < size; i++)
+	{
+		std::cout << name[i] << " ";
+	}
+	std::cout << "\n";
+	
+}
+void PrintArray(char name[],char size)
+{
+	for (int i = 0; i < size; i++)
+	{
+		std::cout << name[i] << " ";
+	}
+	std::cout << "\n";
+}
+int Sum(int one, int two)
+{
+	return one + two;
+}
+double Sum(double one, double two)
+{
+	return one + two;
+}
+float Sum(float one)
+{
+	return one + 52;
+}
 
 
 int main()
@@ -7,10 +99,72 @@ int main()
 	SetConsoleCP(CP_UTF8);
 	SetConsoleOutputCP(CP_UTF8);
 	srand(time(NULL));
-	const int row = 3, col = 4;
-	int arr[row][col]; // // тип_данных имя_массива [строки][стобики];
+	
+	const int size = 5;
+	int intArr[size];
+	double doubleArr[size];
+	char charArr[size];
+
+	/*SetArray(intArr, size);
+	SetArray(doubleArr, size);
+	SetArray(charArr, size);
+	PrintArray(intArr, size);
+	PrintArray(doubleArr, size);
+	PrintArray(charArr, size);*/
+
+	std::cout << Fak(20, 20) ;
+
+	return 0;
+}
+
+	
+	/*for (int i = 0; i < size; ++i) {
+		arr[i] = std::rand() % 5; 
+		std::cout << arr[i] << " ";
+	}
+	std::cout << "\n";
+
+	
+	int a = 0; 
+	for (int i = 0; i < size; ++i)
+	{
+		if (arr[i] != 0) {
+			arr[a++] = arr[i]; 
+		}
+	}
+
+	
+	while (a < size) 
+	{
+		arr[a++] = -1;
+	}
+
+	
+	
+	for (int i = 0; i < size; i++) 
+	{
+		std::cout << arr[i] << " ";
+	}
+	std::cout << "\n";
+
+	return 0;
+}
+	*/
+
+	
+	
+	
+	
+	// // тип_данных имя_массива [строки][стобики];
 	// тип_данных имя_массива [кол_ячеек];
 	// тип_данных имя_переменной
+
+	
+
+/*
+	const int row = 3, col = 4;
+	int arr[row][col];
+
 	for (int i = 0; i < row; i++)
 	{
 
@@ -26,8 +180,7 @@ int main()
 		std::cout << "\n";
 	}
 	std::cout << "123";
-	return 0;
-}
+	*/
 
 	/*int arr[3];
 	arr[0] = 100;
