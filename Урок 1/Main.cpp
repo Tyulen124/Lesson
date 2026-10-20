@@ -111,6 +111,44 @@ void SetArray(int* name, int* size)
 	}
 
 }
+void AddArray(int *&arr, int &size, int num)
+{
+	size++;
+	int* temp = new int[size];
+
+	for (int i = 0; i < size; i++)
+	{
+		temp[i] = arr[i];
+	}
+	std::swap(arr, temp);
+
+	arr[size - 1] = num;
+
+	delete[] temp;
+}
+void createArr(int *&name, int& size)
+{
+	name = new int [size] {};
+}
+void incArr(int *&name, int &size)
+{
+	
+	for (int i = 0; i < size; i++)
+	{
+		name[i] = i + 1;
+	}
+}
+void stdArr(int *& name, int& size)
+{
+	for (int i = 0; i < size; i++)
+	{
+		std::cout << name[i];
+	}
+}
+void delArr(int *& name)
+{
+	delete[] name;
+}
 int main()
 {
 	SetConsoleCP(CP_UTF8);
@@ -124,7 +162,7 @@ int main()
 	std::cout << a << "\n";
 	std::cout << ptr << "\n";
 	std::cout << *ptr << "\n";*/
-	int a = 10;
+	/*int a = 10;
 	int* data = new int;
 
 
@@ -139,18 +177,88 @@ int main()
 	delete data;
 
 	data = nullptr;
-	int one = 10, two = 15;
-	const int size = 5;
-	int arr[size]{  };
+*/
+
+	/*int row = 3, col = 4;
+
+	int** arr = new int* [row];
+	for (int i = 0; i < row; i++)
+	{
+		arr[i] = new int[col] {};
+		
+	}
+	for (int i = 0; i < row; i++)
+	{
+		delete[] arr[i];
+
+	}
+	delete[] arr;*/
+
+	/*int Size = 2, row = 4, col1 = 4, col2 = 3;
+	int*** arr = new int**[Size];
+	for (int i = 0; i < Size; i++)
+	{
+		arr[i] = new int* [row];
+	}
+	
+		for (int j = 0; j < row; j++)
+		{
+			arr[0][j] = new int[col1];
+		}
+		arr[1][0] = new int[2];
+		for (int j = 1; j < row; j++)
+		{
+			arr[1][j] = new int[col2];
+		}
+		for (int i = 0; i < Size; i++)
+		{
+			for (int j = 0; j < row; j++)
+			{
+				delete[]arr[i][j];
+
+		    }
+			delete[]arr[i];
+		}
+		delete[] arr;
+	*/
+	int* ptr = nullptr;
+	
+	int size = 5;
+	createArr(ptr, size);
+	incArr(*&ptr, size);
+	stdArr(*&ptr, size);
+	//delArr(*ptr)
+
+	//std::cin >> size;
+
+	/*int size = 5;
+	* int* arr = nullptr;
+	arr = new int[size] {};
+
+	for (int i = 0; i < size; i++)
+	{
+		arr[i] = i + 1;
+	}
+
+	AddArray(arr, size);
+
+	for (int i = 0; i < size; i++)
+	{
+		arr[i] = i + 1;
+	}*/
+
+	//int one = 10, two = 15;
+	//const int size = 5;
+	//int arr[size]{  };
 	/*std::cout << *arr << "\n";
 	std::cout << *(arr + 1) << "\n"; */
-	SetArray(arr, size);
+	/*SetArray(arr, size);
 	std::cout << *arr  << " " << *(arr + 1) << " " << *(arr + 2) << " " << *(arr + 3) << " " << *(arr + 4) << "\n";
 	
 	std::cout << one << " " << two << "\n";
 	// std::swap(one, two);
 	MySwap(&one, &two);
-	std::cout << one << " " << two << "\n";
+	std::cout << one << " " << two << "\n";*/
 	
 
 	return 0;
