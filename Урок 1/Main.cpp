@@ -1,5 +1,8 @@
+#define NOMINMAX
 #include <iostream>
 #include <Windows.h>
+#include <string>
+#include <limits>
 const int size = 5;
 
 template<typename T1, typename T2>
@@ -152,10 +155,169 @@ void delArr(int *& name)
 int main()
 {
 	SetConsoleCP(CP_UTF8);
-	SetConsoleOutputCP(CP_UTF8);
+	SetConsoleOutputCP(CP_UTF8); //1251 CP_UTF8
 	srand(time(NULL));
 	
-	/*int a = 5;
+	
+	//int* ptr = nullptr;
+	
+	/*int size = 5;
+	
+	/* std::string name = "asd";
+	std::string asd = "Text " + name;
+	std::string* ptr = nullptr;
+	ptr = new std::string;
+	delete ptr;
+	ptr = new std::string[5]{ "Tea", "Garlic", "Ivan", "Apricot", "Apple" };
+
+	auto info = std::find(ptr->begin(), ptr->end(), "Ivan");
+	delete[] ptr;
+
+	//asd.erase('d');
+
+	
+
+	  // std::cout << name << "\n" << asd;
+	for (int i = 0; i < asd.size(); i++)
+	{
+		if (name[i] == 'e')
+		{
+			std::cout << 'E';
+		}
+		else
+		{
+			std::cout << name[i];
+		}
+		
+	}*/
+	/*int num = 0;
+	std::string text;
+	// откуда_текст куда_положить_текст
+	std::getline(std::cin, text);
+	std::cout << text << "\n";
+	std::cin >> num;
+	std::cout << num << "\n";
+
+	// очистка буфера номер 1 std::cin.ignore(32767,'\n'); 
+	// очистка буфера номер 2 (лучшая)  std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+	
+	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+	std::getline(std::cin, text);
+	std::cout << text << "\n";
+	*/
+	std::string login;
+	std::string pass;
+	std::string Mylogin;
+	std::string Mypass;
+	int numl = 0;
+	int nump = 0;
+	while (true)
+	{
+		std::cout << "Введите логин от 5 до 15 символов (Не используйте кириллицу): " << "\n";
+		std::getline(std::cin, login);
+		if (5 >= login.size() || login.size() >= 15)
+		{
+			std::cout << "Недопустимый размер логина";
+			Sleep(2000);
+			system("cls");
+			continue;
+		}
+		for (int i = 0; i < login.size(); i++)
+		{
+			if (login[i] == '0' || login[i] == '1' || login[i] == '2' || login[i] == '3' || login[i] == '4' || login[i] == '5' || login[i] == '6' || login[i] == '7' || login[i] == '8' || login[i] == '9')
+			{
+				numl += login[i];
+			}
+		}
+		if (numl < 2)
+		{
+			std::cout << "Невозможно создать пароль с менее чем 2 цифрами!";
+			Sleep(2000);
+			system("cls");
+			continue;
+		}
+		std::cout << "Введите пароль от 5 до 15 символов (Не используйте кириллицу): ";
+		std::getline(std::cin, pass);
+		if (5 >= pass.size() || pass.size() >= 15)
+		{
+			std::cout << "Недопустимый размер пароля";
+			Sleep(2000);
+			system("cls");
+			continue;
+		}
+		for (int i = 0; i < pass.size(); i++)
+		{
+			if (pass[i] == '0' || pass[i] == '1' || pass[i] == '2' || pass[i] == '3' || pass[i] == '4' || pass[i] == '5' || pass[i] == '6' || pass[i] == '7' || pass[i] == '8' || pass[i] == '9')
+			{
+				nump += pass[i];
+			}
+		}
+		if (nump < 2)
+		{
+			std::cout << "Невозможно создать пароль с менее чем 2 цифрами!";
+			Sleep(2000);
+			system("cls");
+			continue;
+		}
+		break;
+	}
+	system("cls");
+	while (true)
+	{
+		std::cout << "Авторизируйтесь\nВведите логин: " << "\n";
+		std::getline(std::cin, Mylogin);
+		std::cout << "Введите пароль: ";
+		std::getline(std::cin, Mypass);
+		if (Mylogin == login && Mypass == pass)
+		{
+			std::cout << "Вы успешно авторизировались!!!";
+			break;
+		}
+		else
+		{
+			std::cout << "Неверный логин или пароль";
+			Sleep(2000);
+			system("cls");
+			continue;
+		}
+	}
+	
+
+	return 0;
+}
+//int one = 10, two = 15;
+//const int size = 5;
+//int arr[size]{  };
+/*std::cout << *arr << "\n";
+std::cout << *(arr + 1) << "\n"; */
+/*SetArray(arr, size);
+std::cout << *arr  << " " << *(arr + 1) << " " << *(arr + 2) << " " << *(arr + 3) << " " << *(arr + 4) << "\n";
+
+std::cout << one << " " << two << "\n";
+// std::swap(one, two);
+MySwap(&one, &two);
+std::cout << one << " " << two << "\n";*/
+/*//delArr(*ptr)
+
+	//std::cin >> size;
+
+	/*int size = 5;
+	* int* arr = nullptr;
+	arr = new int[size] {};
+
+	for (int i = 0; i < size; i++)
+	{
+		arr[i] = i + 1;
+	}
+
+	AddArray(arr, size);
+
+	for (int i = 0; i < size; i++)
+	{
+		arr[i] = i + 1;
+	}*/
+/*int a = 5;
 	int* ptr = &a; // int* ptr = nullptr (пустой указатель)
 	std::cout << a << "\n";
 	Plus(ptr); // или &a
@@ -179,91 +341,48 @@ int main()
 	data = nullptr;
 */
 
-	/*int row = 3, col = 4;
+/*int row = 3, col = 4;
 
-	int** arr = new int* [row];
-	for (int i = 0; i < row; i++)
-	{
-		arr[i] = new int[col] {};
-		
-	}
-	for (int i = 0; i < row; i++)
-	{
-		delete[] arr[i];
+int** arr = new int* [row];
+for (int i = 0; i < row; i++)
+{
+	arr[i] = new int[col] {};
 
-	}
-	delete[] arr;*/
+}
+for (int i = 0; i < row; i++)
+{
+	delete[] arr[i];
 
-	/*int Size = 2, row = 4, col1 = 4, col2 = 3;
-	int*** arr = new int**[Size];
-	for (int i = 0; i < Size; i++)
-	{
-		arr[i] = new int* [row];
-	}
-	
-		for (int j = 0; j < row; j++)
-		{
-			arr[0][j] = new int[col1];
-		}
-		arr[1][0] = new int[2];
-		for (int j = 1; j < row; j++)
-		{
-			arr[1][j] = new int[col2];
-		}
-		for (int i = 0; i < Size; i++)
-		{
-			for (int j = 0; j < row; j++)
-			{
-				delete[]arr[i][j];
+}
+delete[] arr;*/
 
-		    }
-			delete[]arr[i];
-		}
-		delete[] arr;
-	*/
-	int* ptr = nullptr;
-	
-	int size = 5;
-	createArr(ptr, size);
-	incArr(*&ptr, size);
-	stdArr(*&ptr, size);
-	//delArr(*ptr)
-
-	//std::cin >> size;
-
-	/*int size = 5;
-	* int* arr = nullptr;
-	arr = new int[size] {};
-
-	for (int i = 0; i < size; i++)
-	{
-		arr[i] = i + 1;
-	}
-
-	AddArray(arr, size);
-
-	for (int i = 0; i < size; i++)
-	{
-		arr[i] = i + 1;
-	}*/
-
-	//int one = 10, two = 15;
-	//const int size = 5;
-	//int arr[size]{  };
-	/*std::cout << *arr << "\n";
-	std::cout << *(arr + 1) << "\n"; */
-	/*SetArray(arr, size);
-	std::cout << *arr  << " " << *(arr + 1) << " " << *(arr + 2) << " " << *(arr + 3) << " " << *(arr + 4) << "\n";
-	
-	std::cout << one << " " << two << "\n";
-	// std::swap(one, two);
-	MySwap(&one, &two);
-	std::cout << one << " " << two << "\n";*/
-	
-
-	return 0;
+/*int Size = 2, row = 4, col1 = 4, col2 = 3;
+int*** arr = new int**[Size];
+for (int i = 0; i < Size; i++)
+{
+	arr[i] = new int* [row];
 }
 
+	for (int j = 0; j < row; j++)
+	{
+		arr[0][j] = new int[col1];
+	}
+	arr[1][0] = new int[2];
+	for (int j = 1; j < row; j++)
+	{
+		arr[1][j] = new int[col2];
+	}
+	for (int i = 0; i < Size; i++)
+	{
+		for (int j = 0; j < row; j++)
+		{
+			delete[]arr[i][j];
+
+		}
+		delete[]arr[i];
+	}
+	delete[] arr;
+*/
 /*
 
 Настойка: боярышник
