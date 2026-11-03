@@ -1,8 +1,11 @@
 #define NOMINMAX
-#include <iostream>
+
 #include <Windows.h>
 #include <string>
 #include <limits>
+#include <io.h> // _setmod, _fileno
+#include <fcntl.h> // _0_U16TEXT
+#include "Header.hpp"
 const int size = 5;
 
 template<typename T1, typename T2>
@@ -154,11 +157,72 @@ void delArr(int *& name)
 }
 int main()
 {
-	SetConsoleCP(CP_UTF8);
-	SetConsoleOutputCP(CP_UTF8); //1251 CP_UTF8
+	 //SetConsoleCP(CP_UTF8);
+	//SetConsoleOutputCP(CP_UTF8); //1251 CP_UTF8
 	srand(time(NULL));
+	_setmode(_fileno(stdin), _O_U16TEXT);
+	_setmode(_fileno(stdout), _O_U16TEXT);
+	/* string         wstring
+	* char            wchar_t
+	* std::cin        std::wcin
+	* std::cout		  std::wcout
+	* std::getline()  std::getline()	
+	* "TEXT"		  L"TEXT"
+	* 
+	* 
+	* 
+	* 
+	* 
+	* 
+	 
+	* 
+	* 
+	*/
+	int three = 141;
+	std::wstring firstName;
+	std::wstring lastName;
+	std::wcout << L"Введите ваше имя: ";
+	std::getline(std::wcin, firstName, L'\n');
+	std::wcout << L"Введите вашу фамилию: ";
+	std::getline(std::wcin, lastName, L'\n');
+
+	std::wcout << L"Ваше имя: " << firstName << std::endl;
+	std::wcout << L"Ваша фамилия: " << lastName << L'\n';
+
+	std::wstring text = L"Нам застрали восьмую аудиторию" ;
+
+	size_t position = text.find(L"восьмую");
+
+	if (position != std::wstring::npos)
+	{
+		std::wcout << L"Текст найден! " << position << L'\n';
+	}
 	
+	std::wstring one = text.substr(1, 5); // первый арг - начальная позиция, второй - кол-во символов для чтения
+	// возвращает какой то выделенный участок из строки
+	std::wcout << one << L'\t' << text << L'\n';
+
+	// вырезать
+	text.erase(4, 6); // с какого элемента и сколько вырезать
+	std::wcout << text << L"\n\n";
+	 //вставка
+	text.insert(7, L" какой то текст "); // с какого элемента что вставить
+	std::wcout << text << L"\n\n";
+
+	// замена
+	text = L"Я изучаю java";
+	text.replace(9, 4, L"C++"); //с какого элемента начать, кол-во символов на замену, строка на замену
+	std::wcout << text << L"\n\n";
+
+	// очистка и проверка на пустоту
+
+	text.clear();
+	if (text.empty())
+	{
+		std::wcout << L"Строка пустая";
+	}
 	
+	// char name[100] = "asdasda f ";
 	//int* ptr = nullptr;
 	
 	/*int size = 5;
@@ -206,7 +270,7 @@ int main()
 	std::getline(std::cin, text);
 	std::cout << text << "\n";
 	*/
-	std::string login;
+	/*std::string login;
 	std::string pass;
 	std::string Mylogin;
 	std::string Mypass;
@@ -282,7 +346,7 @@ int main()
 			continue;
 		}
 	}
-	
+	*/
 
 	return 0;
 }
